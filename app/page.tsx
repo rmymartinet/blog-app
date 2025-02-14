@@ -14,6 +14,7 @@ import Loader from "./components/Loader";
 import BlogHeader from "./components/Blog/BlogHeader";
 import BlogCard from "./components/Blog/BlogCard";
 import { animateBlogCardOnScroll } from "@/utils/Animations/BlogAnimation";
+import { fetchPosts } from "./lib/getPosts";
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -38,22 +39,18 @@ export default function Home() {
   );
 
   useEffect(() => {
-    const fetchPosts = async () => {
-      try {
-        const res = await fetch("https://jsonplaceholder.typicode.com/posts");
-        if (!res.ok) throw new Error("Échec de la récupération des articles");
-        const data = await res.json();
+    const getPosts = async () => {
+      setLoading(true);
+      const { data, error } = await fetchPosts();
+      if (error) {
+        setError(error);
+      } else {
         setPosts(data);
-      } catch (error) {
-        console.error("Error fetching posts:", error);
-        setError(
-          "Erreur lors de la récupération des articles. Veuillez réessayer plus tard."
-        );
-      } finally {
-        setLoading(false);
       }
+      setLoading(false);
     };
-    fetchPosts();
+
+    getPosts();
   }, []);
 
   useEffect(() => {
