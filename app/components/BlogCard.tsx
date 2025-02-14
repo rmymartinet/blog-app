@@ -1,15 +1,22 @@
 import { BlogCardProps } from "@/types/blogTypes";
+import { textSplitLines } from "@/utils/Animations/common/TextAnimation";
 import Link from "next/link";
-import React from "react";
+import React, { useLayoutEffect, useRef } from "react";
 import { MdKeyboardArrowRight } from "react-icons/md";
 
 const BlogCard = ({ post }: BlogCardProps) => {
+  const containerRef = useRef<HTMLDivElement | null>(null);
+
+  useLayoutEffect(() => {
+    textSplitLines(containerRef, 0.5);
+  }, []);
+
   return (
     <div
       key={post.id}
       className="p-5 md:p-8 lg:p-10 rounded-xl border group border-primaryCardBorder hover:border-secondaryCardBorder transition-all duration-300 bg-background w-full h-full"
     >
-      <div className="grid grid-rows-3 gap-4 h-full w-full">
+      <div ref={containerRef} className="grid grid-rows-3 gap-4 h-full w-full">
         <Link href={`/post/${post.id}`}>
           <h2 className="text-2xl">{post.title}</h2>
         </Link>

@@ -13,6 +13,7 @@ import { ScrollTrigger } from "gsap/ScrollTrigger";
 import Loader from "./components/Loader";
 import BlogHeader from "./components/BlogHeader";
 import BlogCard from "./components/BlogCard";
+import { animateBlogCardOnScroll } from "@/utils/Animations/BlogAnimation";
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -61,24 +62,20 @@ export default function Home() {
 
   useLayoutEffect(() => {
     if (
+      loading ||
       cardRefs.current.length === 0 ||
       !cardRefs.current.every((ref) => ref !== null)
     )
       return;
 
-    gsap.from(cardRefs.current, {
-      opacity: 0,
-      y: 100,
-      duration: 1,
-      ease: "power2.out",
-      stagger: 0.1,
-      scrollTrigger: {
-        trigger: containerRefs.current,
-        start: "top 90%",
-        end: "bottom 10%",
-      },
+    if (cardRefs.current[0]?.dataset.animated) return;
+
+    cardRefs.current.forEach((el) => {
+      if (el) el.dataset.animated = "true";
     });
-  }, [filteredPosts]);
+
+    animateBlogCardOnScroll(containerRefs, containerRefs);
+  }, [filteredPosts, loading]);
 
   if (loading) {
     return <Loader />;
@@ -103,7 +100,7 @@ export default function Home() {
         >
           {filteredPosts.map((post, index) => (
             <div
-              key={post.id}
+              key={`${index}-${searchTerm}`}
               ref={(el) => {
                 cardRefs.current[index] = el;
               }}
