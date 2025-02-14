@@ -1,4 +1,4 @@
-import { SearchBarProps } from "@/types/blogTypes";
+import { SearchBarProps } from "@/types/searchBarTypes";
 import { animateVerticalBlur } from "@/utils/Animations/BlogAnimation";
 import { useGSAP } from "@gsap/react";
 import React, { useCallback, useRef, useState } from "react";

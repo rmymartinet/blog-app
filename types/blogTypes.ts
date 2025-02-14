@@ -15,11 +15,3 @@ export interface BlogProps {
 export interface BlogCardProps {
   post: PostProps;
 }
-
-export interface SearchBarProps {
-  filteredPosts: PostProps[];
-  hashtags: string[];
-  setHashtags: (hastags: string[]) => void;
-  searchTerm: string;
-  setSearchTerm: (searchTerm: string) => void;
-}
