@@ -1,6 +1,7 @@
 export interface PostProps {
   id: number;
   title: string;
+  userId?: number;
   body: string;
 }
 
@@ -13,11 +14,4 @@ export interface BlogProps {
 
 export interface BlogCardProps {
   post: PostProps;
-}
-
-export interface PostDetailsProps {
-  id: number;
-  title: string;
-  userId: number;
-  body: string;
 }

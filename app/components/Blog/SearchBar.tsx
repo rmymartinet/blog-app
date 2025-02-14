@@ -1,4 +1,5 @@
-import { SearchBarProps } from "@/types/blogTypes";
+import { PostProps } from "@/types/blogTypes";
+import { SearchBarProps } from "@/types/searchBarTypes";
 import { animateVerticalBlur } from "@/utils/Animations/BlogAnimation";
 import { useGSAP } from "@gsap/react";
 import React, { useCallback, useRef, useState } from "react";
@@ -19,10 +20,10 @@ function SearchBar({
       e.preventDefault();
 
       const isHashtagInPosts =
-        filteredPosts.some((post) =>
+        filteredPosts.some((post: PostProps) =>
           post.title.toLowerCase().includes(searchTerm.toLowerCase())
         ) ||
-        filteredPosts.some((post) =>
+        filteredPosts.some((post: PostProps) =>
           post.body.toLowerCase().includes(searchTerm.toLowerCase())
         );
 
