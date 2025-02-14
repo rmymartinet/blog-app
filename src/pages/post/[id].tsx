@@ -1,9 +1,9 @@
 import BackButton from "@/src/components/Backbutton";
 import PostDetails from "@/src/components/Blog/PostDetails";
 import { PostProps } from "@/types/blogTypes";
-import { getStaticProps, getStaticPaths } from "@/src/lib/postData";
+import { getPostStaticProps, getPostStaticPaths } from "@/src/lib/postData";
 
-export { getStaticPaths, getStaticProps };
+export { getPostStaticProps, getPostStaticPaths };
 export default function PostPage({ post }: { post: PostProps }) {
   if (!post) {
     return (

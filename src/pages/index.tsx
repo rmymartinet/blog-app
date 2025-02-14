@@ -10,8 +10,8 @@ import { animateBlogCardOnScroll } from "@/utils/Animations/BlogAnimation";
 import BlogHeader from "../components/Blog/BlogHeader";
 import BlogCard from "../components/Blog/BlogCard";
 import { PostProps } from "@/types/blogTypes";
-import { PostsGetStaticProps } from "../lib/postData";
-export { PostsGetStaticProps as getStaticProps };
+import { getAllPostsStaticProps } from "@/src/lib/postData";
+export { getAllPostsStaticProps as getStaticProps };
 
 export default function HomePage({ posts }: { posts: PostProps[] }) {
   const [loading, setLoading] = useState(true);
