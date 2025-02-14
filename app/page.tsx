@@ -11,8 +11,8 @@ import {
 import { gsap } from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import Loader from "./components/Loader";
-import BlogHeader from "./components/BlogHeader";
-import BlogCard from "./components/BlogCard";
+import BlogHeader from "./components/Blog/BlogHeader";
+import BlogCard from "./components/Blog/BlogCard";
 import { animateBlogCardOnScroll } from "@/utils/Animations/BlogAnimation";
 
 gsap.registerPlugin(ScrollTrigger);

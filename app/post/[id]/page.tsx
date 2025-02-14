@@ -1,5 +1,5 @@
 import BackButton from "@/app/components/Backbutton";
-import PostDetails from "@/app/components/PostDetails";
+import PostDetails from "@/app/components/Blog/PostDetails";
 import React from "react";
 
 export default async function PostId({ params }: { params: { id: string } }) {
