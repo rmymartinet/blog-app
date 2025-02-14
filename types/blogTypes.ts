@@ -3,3 +3,14 @@ export interface PostProps {
   title: string;
   body: string;
 }
+
+export interface BlogProps {
+  loading: boolean;
+  filteredPosts: PostProps[];
+  searchTerm: string;
+  setSearchTerm: (searchTerm: string) => void;
+}
+
+export interface BlogCardProps {
+  post: PostProps;
+}
