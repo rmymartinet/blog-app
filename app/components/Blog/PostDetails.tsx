@@ -1,11 +1,11 @@
 "use client";
 
-import { PostDetailsProps } from "@/types/blogTypes";
+import { PostProps } from "@/types/blogTypes";
 import { textSplitLines } from "@/utils/Animations/common/TextAnimation";
 import { useGSAP } from "@gsap/react";
 import { useRef } from "react";
 
-const PostDetails = ({ post }: { post: PostDetailsProps }) => {
+const PostDetails = ({ post }: { post: PostProps }) => {
   const titleRef = useRef<HTMLHeadingElement>(null);
   const postInfosRef = useRef<HTMLDivElement>(null);
   const postTextRef = useRef<HTMLParagraphElement>(null);
